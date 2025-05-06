@@ -217,3 +217,9 @@ def obtener_series(usuario: str = Depends(verificar_credenciales)):
     series = db.query(Serie).all()
     db.close()
     return series
+
+@app.get("/")
+def root():
+    return {
+        "Bienvenido a la API de Serie Fibonacci. Usa /docs para ver la documentación interactiva."
+    }
