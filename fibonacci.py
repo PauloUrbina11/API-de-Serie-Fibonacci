@@ -107,7 +107,16 @@ async def generar_fibonacci_manual_pruebas(data: TimeRequestEmail, usuario: str 
     db.commit()
     db.close()
     
-    mensaje = f"Hora de ejecución: {data.time}\nSerie generada: {serie}"
+    mensaje = (
+    f"🔢 *Generación de Serie Fibonacci*\n\n"
+    f"🕒 Hora de ejecución: {data.time}\n"
+    f"🌱 Semillas iniciales: {min1}, {min2}\n"
+    f"📏 Longitud de la serie: {segundos}\n\n"
+    f"📋 Serie generada:\n"
+    f"{', '.join(map(str, serie))}\n\n"
+    f"Atentamente,\n"
+    f"Paulo Urbina Zuñiga"
+    )
     await send_email(data.email, data.subject, mensaje)
 
     return {
@@ -182,7 +191,16 @@ async def generar_fibonacci_auto_y_enviar(data: AutoSendRequest, usuario: str = 
     db.commit()
     db.close()
 
-    mensaje = f"Hora de ejecución: {hora_actual.strftime('%H:%M:%S')}\nSerie generada: {serie}"
+    mensaje = (
+    f"🔢 *Generación de Serie Fibonacci*\n\n"
+    f"🕒 Hora de ejecución: {data.time}\n"
+    f"🌱 Semillas iniciales: {min1}, {min2}\n"
+    f"📏 Longitud de la serie: {segundos}\n\n"
+    f"📋 Serie generada:\n"
+    f"{', '.join(map(str, serie))}\n\n"
+    f"Atentamente,\n"
+    f"Paulo Urbina Zuñiga"
+    )
     await send_email(data.email, data.subject, mensaje)
 
     return {
